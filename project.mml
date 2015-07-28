@@ -1,14 +1,14 @@
 {
   "bounds": [
-    4.8033,
-    45.716,
-    4.8686,
-    45.7756
+    4.8171,
+    45.7305,
+    4.8354,
+    45.7344
   ],
   "center": [
-    4.8367,
-    45.7464,
-    13
+    4.8252,
+    45.7323,
+    18
   ],
   "format": "png8",
   "interactivity": false,
@@ -18,8 +18,8 @@
   "Stylesheet": [
     "style.mss",
     "couleur.mss",
-    "Fond_de_plan",
-    "topo.mss"
+    "topo.mss",
+    "fond_de_plan.mss"
   ],
   "Layer": [
     {
@@ -116,7 +116,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way , highway, name,\n\ncase when highway in ('motorway','motorway_link','trunk','trunk_link' )\n\tthen 'oui'::text      \n\telse null\nend as autoroute,\n\ncase when highway in ('primary','primary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_rouge,\n\ncase when highway in ('secondary','secondary_link','tertiary','tertiary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_jaune,\n\n\ncase when highway in ('residential','service','unclassified','living_street')\n\tthen 'oui'::text      \n\telse null\nend as route_blanche,\n\ncase when  (oneway = 'yes'  and railway is null )\n    \n\tthen 'oui'::text      \n\telse 'non'::text\nend as su ,\n\ncase when oneway = 'yes' and (cycleway in ('opposite','opposite_lane')\n      or (\"cycleway:left\" in ('opposite','opposite_lane')))\n\tthen 'oui'::text      \n\telse 'non'::text\nend as dsc,\n\ncase when railway  in ('rail','tram','plateform','abandoned')\n\tthen 'oui'::text      \n\telse null\nend as rail ,\n\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel ,\n\ncase when bridge in ('yes','viaduct','suspension','arch')\n        then 'oui'::text\n        else 'non'::text\nend as pont ,\n\ncase when (highway='path' and bicycle='designated') or(highway='path' and motor_vehicule='no')\n      then 'oui'::text\n     else null\nend as voieverte,\n\ncase when ((cycleway='lane' and oneway is null) or \n      (\"cycleway:right\"='lane' and \"cycleway:left\"='lane'))\n     then 'oui'::text\n     else null\nend as bandes ,\n\ncase when (\"cycleway:right\"='lane' or (cycleway='lane' and oneway in ('yes','1')))\n     then 'oui'::text\n     else null\nend as bande_droite ,\n \n\ncycleway , \"cycleway:left\",\"cycleway:right\",bicycle from planet_osm_line order by z_order )  as route",
+        "table": "(select way , highway, name,\n\ncase when highway in ('motorway','motorway_link','trunk','trunk_link' )\n\tthen 'oui'::text      \n\telse null\nend as autoroute,\n\ncase when highway in ('primary','primary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_rouge,\n\ncase when highway in ('secondary','secondary_link','tertiary','tertiary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_jaune,\n\n\ncase when highway in ('residential','service','unclassified','living_street')\n\tthen 'oui'::text      \n\telse null\nend as route_blanche,\n\n\ncase when highway in ('track','footway','path') and bicycle is null\n\tthen 'oui'::text      \n\telse null\nend as chemin_simple,\n\ncase when  (oneway = 'yes'  and railway is null )\n    \n\tthen 'oui'::text      \n\telse 'non'::text\nend as su ,\n\ncase when oneway = 'yes' and (cycleway in ('opposite','opposite_lane')\n      or (\"cycleway:left\" in ('opposite','opposite_lane')))\n\tthen 'oui'::text      \n\telse 'non'::text\nend as dsc,\n\ncase when railway  in ('rail','tram','plateform','abandoned')\n\tthen 'oui'::text      \n\telse null\nend as rail ,\n\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel ,\n\ncase when bridge in ('yes','viaduct','suspension','arch')\n        then 'oui'::text\n        else 'non'::text\nend as pont ,\n\ncase when (highway='path' and motor_vehicule='no') or \n                     (highway='path' and bicycle='designated')\n      then 'oui'::text\n     else null \nend as voieverte,\n\ncase when ((cycleway='lane' and oneway is null) or \n      (\"cycleway:right\"='lane' and \"cycleway:left\"='lane'))\n     then 'oui'::text\n     else null\nend as bandes ,\n\ncase when (\"cycleway:right\"='lane' or (cycleway='lane' and oneway in ('yes','1')))\n     then 'oui'::text\n     else null\nend as bande_droite ,\n \n\ncycleway , \"cycleway:left\",\"cycleway:right\",bicycle from planet_osm_line order by z_order )  as route",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",

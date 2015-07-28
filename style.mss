@@ -341,6 +341,16 @@
   }
   } 
   
+  [chemin_simple='oui']{
+
+  [zoom >=14]{
+  
+    line-width:1;
+    line-color:@chemin;
+    line-dasharray : 5,7 ;
+    }
+  }  
+  
  
   
   
