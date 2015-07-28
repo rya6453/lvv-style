@@ -1,0 +1,176 @@
+{
+  "bounds": [
+    4.8033,
+    45.716,
+    4.8686,
+    45.7756
+  ],
+  "center": [
+    4.8367,
+    45.7464,
+    13
+  ],
+  "format": "png8",
+  "interactivity": false,
+  "minzoom": 9,
+  "maxzoom": 18,
+  "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+  "Stylesheet": [
+    "style.mss",
+    "couleur.mss",
+    "Fond_de_plan",
+    "topo.mss"
+  ],
+  "Layer": [
+    {
+      "geometry": "polygon",
+      "extent": [
+        4.624721927232422,
+        45.57146898564117,
+        5.105630972167029,
+        45.932550993750674
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way  from planet_osm_polygon where leisure in \n('pitch','garden','park','playground','sports_centre','common') ) as surface",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "514821.69,5711940.76,568356.24,5769547.05",
+        "dbname": "osmgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "gisuser",
+        "password": "carina"
+      },
+      "id": "surfaces",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "surfaces"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        4.624722915379234,
+        45.57147093503832,
+        5.105633846775938,
+        45.932550993750674
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( select way from planet_osm_line where waterway  in ('river' ,'stream','canal','weir') )as riviere",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "514821.8,5711941.07,568356.56,5769547.05",
+        "dbname": "osmgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "gisuser",
+        "password": "carina"
+      },
+      "id": "riviere",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "riviere"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        4.624721927232422,
+        45.57146898564117,
+        5.105630972167029,
+        45.932550993750674
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select  way from planet_osm_polygon where \nwater = 'river' or \nwaterway = 'riverbank' or \n\"natural\"= 'water' or\nleisure='marina') as eau",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "514821.69,5711940.76,568356.24,5769547.05",
+        "dbname": "osmgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "gisuser",
+        "password": "carina"
+      },
+      "id": "eau",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "eau"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        4.135999964777241,
+        45.30500013702255,
+        5.5169999936534895,
+        46.19099998436881
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way , highway, name,\n\ncase when highway in ('motorway','motorway_link','trunk','trunk_link' )\n\tthen 'oui'::text      \n\telse null\nend as autoroute,\n\ncase when highway in ('primary','primary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_rouge,\n\ncase when highway in ('secondary','secondary_link','tertiary','tertiary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_jaune,\n\n\ncase when highway in ('residential','service','unclassified','living_street')\n\tthen 'oui'::text      \n\telse null\nend as route_blanche,\n\ncase when  (oneway = 'yes'  and railway is null )\n    \n\tthen 'oui'::text      \n\telse 'non'::text\nend as su ,\n\ncase when oneway = 'yes' and (cycleway in ('opposite','opposite_lane')\n      or (\"cycleway:left\" in ('opposite','opposite_lane')))\n\tthen 'oui'::text      \n\telse 'non'::text\nend as dsc,\n\ncase when railway  in ('rail','tram','plateform','abandoned')\n\tthen 'oui'::text      \n\telse null\nend as rail ,\n\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel ,\n\ncase when bridge in ('yes','viaduct','suspension','arch')\n        then 'oui'::text\n        else 'non'::text\nend as pont ,\n\ncase when (highway='path' and bicycle='designated') or(highway='path' and motor_vehicule='no')\n      then 'oui'::text\n     else null\nend as voieverte,\n\ncase when ((cycleway='lane' and oneway is null) or \n      (\"cycleway:right\"='lane' and \"cycleway:left\"='lane'))\n     then 'oui'::text\n     else null\nend as bandes ,\n\ncase when (\"cycleway:right\"='lane' or (cycleway='lane' and oneway in ('yes','1')))\n     then 'oui'::text\n     else null\nend as bande_droite ,\n \n\ncycleway , \"cycleway:left\",\"cycleway:right\",bicycle from planet_osm_line order by z_order )  as route",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "460417.41,5669666,614149.63,5811010.11",
+        "host": "localhost",
+        "user": "gisuser",
+        "password": "carina",
+        "dbname": "osmgis",
+        "id": "route",
+        "project": "lvv",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "route",
+      "class": "direction",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "route"
+    },
+    {
+      "geometry": "linestring",
+      "extent": [
+        4.602000748919658,
+        45.55599996150229,
+        5.1709998482564234,
+        45.93499983718312
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way , highway, name,\n\ncase when highway in ('motorway','motorway_link','trunk','trunk_link' )\n\tthen 'oui'::text      \n\telse null\nend as autoroute,\n\ncase when highway in ('primary','primary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_rouge,\n\ncase when highway in ('secondary','secondary_link','tertiary','tertiary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_jaune,\n\ncase when highway in ('residential','service','unclassified','living_street')\n\tthen 'oui'::text      \n\telse null\nend as route_blanche,\n\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel ,\n\ncase when bridge in ('yes','viaduct','suspension','arch')\n        then 'oui'::text\n        else 'non'::text\nend as pont \n \n from planet_osm_line order by z_order )  as route",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "512292.38,5709481.16,575633.07,5769939.01",
+        "dbname": "osmgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "gisuser",
+        "password": "carina",
+        "id": "toponymie_routes",
+        "project": "lvv",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
+      },
+      "id": "toponymie_routes",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "toponymie_routes"
+    }
+  ],
+  "scale": 1,
+  "metatile": 2,
+  "name": "lvv",
+  "description": "lvv",
+  "attribution": ""
+}
