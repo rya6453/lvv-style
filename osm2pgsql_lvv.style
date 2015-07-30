@@ -36,9 +36,12 @@ node,way   area         text         # hard coded support for area=1/yes => poly
 node,way   bicycle      text         nocache
 node       capacity     text         linear
 way        cycleway     text         linear 
-way		   cycleway:left    text	 linear
-way		   cycleway:right	text	 linear
-way		   motor_vehicule   text     linear
+way		     cycleway:left    text	       linear
+way		     cycleway:right	  text	       linear
+way        busway           text         linear
+way        busway:left      text         linear  
+way        busway:right     text         linear 
+way		     motor_vehicule   text         linear
 way        max_speed    text         linear	
 node,way   bridge       text         linear
 node,way   boundary     text         linear
