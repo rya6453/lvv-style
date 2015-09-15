@@ -32,7 +32,30 @@ polygon-fill:@fleuve;
 
 }
 
+
+
+#bati{
+  [zoom >= 15]{
+  polygon-fill : @bati_standard ;
+  [building='school']{polygon-fill : @bati_remarquable ; }
+  [building='church']{polygon-fill : @bati_remarquable ; }
+  }
+}
+
+
+
 #surfaces {
   
   [zoom > 11] {polygon-fill :@surface;}
 }
+
+
+#zone_pietonne{
+ 
+  [zoom >14]{
+  
+ polygon-fill:@fond_pieton;
+    line-width:2;
+ line-color:@bord_pieton;   
+  }
+  }

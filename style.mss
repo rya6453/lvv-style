@@ -1,5 +1,43 @@
 
 
+
+#funiculaire{
+   [zoom >13]{
+  ::fond{  
+  line-color: @funiculaire;
+  line-width:3; 
+      }
+    
+   ::milieu{
+      line-width:2;
+     line-color:#000;
+     line-dasharray : 5,5 ;
+      }    
+    }
+}
+
+
+#interdit_velo{
+  
+ 
+  [zoom >=15][tunnel='non']{      
+    line-color: #F00;
+    line-width:1.5;
+       line-dasharray : 5,8 ;
+     }    
+  
+  [zoom >=15][tunnel='oui']{      
+    line-color: #fa8484; 
+    line-width:1.5;
+       line-dasharray : 5,8 ;
+     }    
+    
+ 
+}  
+
+
+
+
 #route  {  
   
   
@@ -9,6 +47,15 @@
       line-color: @rail;
       line-join: round;
       line-width: 1;
+      [zoom >=16]{ line-width :2;}
+      }
+    
+    
+    [tunnel='oui']{
+      line-color: @rail + 40%;
+      line-join: round;
+      line-width: 1;
+      line-dasharray : 5,8 ;
       [zoom >=16]{ line-width :2;}
       }
     
@@ -45,7 +92,7 @@
       [zoom >=10]{ line-width :2;}
       [zoom >=12]{ line-width :4;}
       [zoom >=14]{ line-width :8;}
-      [zoom >=16]{ line-width :12;}     
+      [zoom >=16]{ line-width :13;}     
       
       
  	 }
@@ -55,7 +102,7 @@
         [zoom >=10]{ line-width :2;}
         [zoom >=12]{ line-width :4;}
         [zoom >=14]{ line-width :8;}
-        [zoom >=16]{ line-width :12;}         
+        [zoom >=16]{ line-width :13;}         
    
       }  
     
@@ -188,6 +235,9 @@
                [zoom >=13]{line-width:2;}
                [zoom >=15]{line-width:5;}
                [zoom >=17]{line-width:8;}
+               [zoom >=15][dsc='oui']{line-color:@dsc;}
+               [zoom >=16][dsc='oui']{line-color:@dsc;}
+               [zoom >=17][dsc='oui']{line-color:@dsc;}
             }              
       
       }
@@ -341,7 +391,9 @@
   }
   } 
   
-  [chemin_simple='oui']{
+  
+  
+   [chemin_simple='oui']{
 
   [zoom >=14]{
   
@@ -349,14 +401,11 @@
     line-color:@chemin;
     line-dasharray : 5,7 ;
     }
-  }  
+  }     
   
- 
+
   
-  
-  
-  
-  
+
   
   [voieverte='oui'],[highway='cycleway']{
     [zoom >= 13]{
@@ -381,6 +430,11 @@
       
     } // fin zoom 13
    }// fin voie verte
+  
+  
+  
+  
+  
   
   
   [bandes='oui']{  //================ Bandes cyclables ==============
@@ -411,16 +465,47 @@
    }
   }  
   
+  
+::bus_droite_direct {  // ====  bus_droite_direct  2 ieme passe sur objet route 
+[bus_droite_direct='oui']{  
+  
+  [zoom>=16]{      
+    line-pattern-file : url(image/fleche_bleu_droite.png);
+    line-pattern-offset : -7
+    }
+  
+   [zoom=14],[zoom=15]{      
+    line-offset : -2;
+    line-color: @bus; 
+    line-width:3;line-join: round;
+    line-dasharray : 5, 5;    
+    }
+  }
+ } 
+  
+  
+::bus_gauche_inverse  {  //   2 ieme passe sur objet route 
+[bus_gauche_inverse ='oui']{  
+  
+  [zoom>=16]{      
+    line-pattern-file : url(image/fleche_bleu_gauche.png);
+    line-pattern-offset : 7
+    }
+  
+   [zoom=14],[zoom=15]{      
+    line-offset : 2;
+    line-color: @bus; 
+    line-width:3;line-join: round;
+    line-dasharray : 5, 5;    
+    }
+  }
+ }    
+  
+  
+}//==================  fin #route ========================
 
-  
-  
-  
-  
-  
-  
-  
-  
-}
+
+
 
 .direction::direction {
 
@@ -430,7 +515,7 @@
       
       marker-file : url(svg/fleche_su.svg);
       marker-placement: line;
-      marker-fill:#8875db;     
+      marker-fill:#7060b6;     
 
     
     

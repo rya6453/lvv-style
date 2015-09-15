@@ -1,17 +1,54 @@
 
+
+
+#nom_ville[zoom>=11][zoom<=13] {       
+  
+        text-name : [name];
+     	text-face-name : 'DejaVu Sans Condensed';
+        text-fill : @texte_topo; 
+    	text-halo-radius : 2;
+    	text-allow-overlap : false;
+  	 
+  
+    [zoom =11]{    	
+    	[place='city']{ text-size : 22 ;}
+        [place='town']{ text-size : 16 ;}
+        [place='village']{ text-size : 12 ;}
+    }
+  
+    [zoom =12]{     	
+    	[place='city']{ text-size : 18 ;}
+        [place='town']{ text-size : 15 ;}
+        [place='village']{ text-size : 13 ;}
+    }
+  
+  [zoom =13]{     	
+    	[place='city']{ text-size : 20 ;}
+        [place='town']{ text-size : 16 ;}
+        [place='village']{ text-size : 14 ;}
+    }
+ 
+}
+
+
+
+
+
+
+
+
 #toponymie_routes {
   
 [route_rouge='oui'][tunnel='non']{   
-   [zoom>=13]{
-    
+   [zoom>=14]{    
     text-name : [name];
   	text-face-name : 'DejaVu Sans Condensed';
-    text-halo-radius : 2;
-    
+    text-halo-radius : 2;    
     text-size : 12 ;
     text-placement : line ;
-    text-allow-overlap : false;    
+    text-allow-overlap : false ;      
     } 
+    
     
     
   
@@ -19,7 +56,7 @@
   
   
 [route_jaune='oui']{
-    [zoom >=14]{
+    [zoom >=15]{
     text-name : [name];
   	text-face-name : 'DejaVu Sans Condensed';
     text-halo-radius : 2;
@@ -28,7 +65,7 @@
     text-placement : line ;
     text-allow-overlap : false;   
 	}
-    [zoom >=17]{text-allow-overlap : true;} 
+    [zoom >=17][dsc='oui']{text-allow-overlap : true; text-halo-fill:@dsc;} 
 }  
   
   
@@ -40,15 +77,15 @@
       text-size : 11 ;
       text-placement : line ;
       text-allow-overlap : false;
-      text-fill : gray - 30% ;   
+      text-fill : gray - 50% ;   
 	}
-    [zoom >=17]{text-allow-overlap : true;} 
+    [zoom >=17][dsc='oui']{text-allow-overlap : true;text-halo-fill:@dsc;} 
      
     
 }
   
 [highway='pedestrian']{      // ------------ rue pietonne
-    [zoom >15]{
+    [zoom >=16]{
     text-name : [name];
   	text-face-name : 'DejaVu Sans Condensed';
     text-halo-radius : 2;
@@ -61,6 +98,25 @@
 	}
 }  
   
+  [chemin_simple='oui']{
+    
+     [zoom >=16]{
+    text-name : [name];
+  	text-face-name : 'DejaVu Sans Condensed';
+    text-halo-radius : 2;
+    text-size : 11 ;
+    text-placement : line ;
+    text-allow-overlap : false;
+    text-fill : gray - 30% ;
+   
+   
+	}
+
+  
+  }    
+  
+  
+
   
   
   
@@ -70,4 +126,4 @@
   
   
   
-  }
+}  

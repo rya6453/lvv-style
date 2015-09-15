@@ -1,5 +1,5 @@
 @fond: #F5F3ED;
-@texte_topo:#919191;
+@texte_topo:#5a5555;
 
 
 @fleuve:#B0D0E5;
@@ -8,9 +8,10 @@
 @pont :#413211;
 
 @rail: #a8a8a6;
+@rail_tunnel: #a8a8a6 + 60% ;
 
 @autoroute_fond: #413211;
-@autoroute:#91b1cc;
+@autoroute:#7593ac;
 @autoroute_tunnel:@autoroute + 90% ;
 
 @route_rouge : #eeae79;
@@ -28,11 +29,11 @@
 @bord_pieton : #B4B8FF;
 
 @bati_standard : #E3E1DD;
-@bati_remarquable :@bati_standard - 20%;
+@bati_remarquable :@bati_standard - 40%;
 
 @surface : #BCD6A5;
 
-@piste : #4bcf4b;
+@piste : #53c453;
 
 @dsc : #baf4a7;
 
@@ -42,7 +43,8 @@
 
 
 
-@bus : #1739d4;
+@bus : #314ecf;
+@bus_inverse : #c376ec;
 
 @chemin : #8e5d5d ;
 
