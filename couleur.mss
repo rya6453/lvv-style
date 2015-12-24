@@ -3,6 +3,7 @@
 
 
 @fleuve:#B0D0E5;
+@texte_fleuve :#B0D0E5 - 90% ;
 
 
 @pont :#413211;
@@ -41,7 +42,7 @@
 
 @velociste :#FEC700;
 
-
+@atelier :#e83011;
 
 @bus : #314ecf;
 @bus_inverse : #c376ec;

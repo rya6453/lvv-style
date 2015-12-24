@@ -31,7 +31,20 @@
 }
 
 
-
+#libel_riviere {
+  
+  [zoom>=14]{    
+    text-name : [name];
+  	text-face-name : 'DejaVu Sans Condensed Oblique';
+    text-halo-radius : 0.8;    
+    text-size : 12 ;
+    text-placement : line ;
+    text-fill : @texte_fleuve;
+    text-allow-overlap : false ; 
+    text-min-path-length : 200;
+  }
+  
+ } 
 
 
 
@@ -76,7 +89,7 @@
       text-halo-radius : 2;
       text-size : 11 ;
       text-placement : line ;
-      text-allow-overlap : false;
+      text-allow-overlap : true;
       text-fill : gray - 50% ;   
 	}
     [zoom >=17][dsc='oui']{text-allow-overlap : true;text-halo-fill:@dsc;} 

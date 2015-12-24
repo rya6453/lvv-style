@@ -1,19 +1,19 @@
 {
   "bounds": [
-    4.8171,
-    45.7305,
-    4.8354,
-    45.7344
+    4.6151,
+    45.5714,
+    5.1075,
+    45.9322
   ],
   "center": [
-    4.8252,
-    45.7323,
-    18
+    4.8479,
+    45.7543,
+    11
   ],
   "format": "png8",
   "interactivity": false,
-  "minzoom": 9,
-  "maxzoom": 18,
+  "minzoom": 10,
+  "maxzoom": 17,
   "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
   "Stylesheet": [
     "style.mss",
@@ -108,6 +108,34 @@
       "name": "eau"
     },
     {
+      "geometry": "linestring",
+      "extent": [
+        4.624722915379234,
+        45.57147093503832,
+        5.105633846775938,
+        45.932550993750674
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "( select way ,name from planet_osm_line where waterway  in ('river' ,'stream','canal','weir')) as libel_riviere",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "514821.8,5711941.07,568356.56,5769547.05",
+        "dbname": "osmgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "gisuser",
+        "password": "carina"
+      },
+      "id": "libel_riviere",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "libel_riviere"
+    },
+    {
       "geometry": "polygon",
       "extent": [
         4.624721927232422,
@@ -145,7 +173,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way ,building from planet_osm_polygon where building is not null and building <> 'marina' and public_transport is null\n) as bati\n",
+        "table": "(select way ,building from planet_osm_polygon where building is not null and  public_transport is null\n) as bati\n",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",
@@ -154,7 +182,10 @@
         "host": "localhost",
         "port": "5432",
         "user": "gisuser",
-        "password": "carina"
+        "password": "carina",
+        "id": "bati",
+        "project": "lvv",
+        "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over"
       },
       "id": "bati",
       "class": "",
@@ -173,7 +204,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way , highway, name,\n\ncase when highway in ('motorway','motorway_link','trunk','trunk_link' )\n\tthen 'oui'::text      \n\telse null\nend as autoroute,\n\ncase when highway in ('primary','primary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_rouge,\n\ncase when highway in ('secondary','secondary_link','tertiary','tertiary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_jaune,\n\n\ncase when highway in ('residential','service','unclassified','living_street') \n                                          and bicycle is null\n\tthen 'oui'::text      \n\telse null\nend as route_blanche,\n\n\ncase when highway in ('track','footway','path') \n        \n\tthen 'oui'::text      \n\telse null\nend as chemin_simple,\n\ncase when  (oneway = 'yes'  and railway is null )\n    \n\tthen 'oui'::text      \n\telse 'non'::text\nend as su ,\n\ncase when oneway = 'yes' and (cycleway in ('opposite','opposite_lane')\n      or (\"cycleway:left\" in ('opposite','opposite_lane')))\n\tthen 'oui'::text      \n\telse 'non'::text\nend as dsc,\n\ncase when railway  in ('rail','tram','plateform','abandoned')\n\tthen 'oui'::text      \n\telse null\nend as rail ,\n\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel ,\n\ncase when bridge in ('yes','viaduct','suspension','arch')\n        then 'oui'::text\n        else 'non'::text\nend as pont ,\n\ncase when (highway='path' and motor_vehicle='no') or \n                     (highway='path' and bicycle='designated') or\n                      (highway='service' and bicycle='designated')  \n      then 'oui'::text\n     else null \nend as voieverte,\n\ncase when ((cycleway='lane' and oneway is null) or \n      (\"cycleway:right\"='lane' and \"cycleway:left\"='lane'))\n     then 'oui'::text\n     else null\nend as bandes ,\n\ncase when (\"cycleway:right\"='lane' or (cycleway='lane' and oneway in ('yes','1')))\n     then 'oui'::text\n     else null\nend as bande_droite ,\n\ncase when  (\"cycleway:right\"='share_busway'  or\n          (cycleway='share_busway' ) \n         )\n\n     then 'oui'::text\n    else null\nend as bus_droite_direct ,\n\ncase when  (\"cycleway:left\"='share_busway' or \n         \"cycleway:left\"='opposite_share_busway' or \n          (cycleway='share_busway'  and oneway is null     )\n\n)\n     then 'oui'::text\n    else null\nend as bus_gauche_inverse ,\n\n\n\n \n\ncycleway , \"cycleway:left\",\"cycleway:right\",bicycle from planet_osm_line order by z_order )  as route",
+        "table": "(select way , highway, name,\n\ncase when highway in ('motorway','motorway_link','trunk','trunk_link' )\n\tthen 'oui'::text      \n\telse null\nend as autoroute,\n\ncase when highway in ('primary','primary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_rouge,\n\ncase when highway in ('secondary','secondary_link','tertiary','tertiary_link')\n\tthen 'oui'::text      \n\telse null\nend as route_jaune,\n\n\ncase when highway in ('residential','service','unclassified','living_street') \n                                          -- and bicycle is null\n\tthen 'oui'::text      \n\telse null\nend as route_blanche,\n\n\ncase when highway in ('track','footway','path') \n                                \n        \n\tthen 'oui'::text      \n\telse null\nend as chemin_simple,\n\ncase when  (oneway = 'yes'  and railway is null )\n    \n\tthen 'oui'::text      \n\telse 'non'::text\nend as su ,\n\ncase when oneway = 'yes' and (cycleway in ('opposite','opposite_lane')\n      or (\"cycleway:left\" in ('opposite','opposite_lane')))\n\tthen 'oui'::text      \n\telse 'non'::text\nend as dsc,\n\ncase when railway  in ('rail','tram','plateform','abandoned')\n\tthen 'oui'::text      \n\telse null\nend as rail ,\n\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel ,\n\ncase when bridge in ('yes','viaduct','suspension','arch')\n        then 'oui'::text\n        else 'non'::text\nend as pont ,\n\ncase when (highway='path' and motor_vehicle='no') or \n                     (highway='path' and bicycle='designated') or\n                      (highway='service' and bicycle='designated')  or\n                      highway='cycleway'\n      then 'oui'::text\n     else null \nend as voieverte,\n\ncase when ((cycleway='lane' and (oneway is null or oneway='no')) or \n      (\"cycleway:right\"='lane' and \"cycleway:left\"='lane'))\n     then 'oui'::text\n     else null\nend as bandes ,\n\ncase when (\"cycleway:right\"='lane' or (cycleway='lane' and oneway in ('yes','1')))\n     then 'oui'::text\n     else null\nend as bande_droite ,\n\n\ncase when (\"cycleway:left\"='lane' )\n     then 'oui'::text\n     else null\nend as bande_gauche ,\n\ncase when  (\"cycleway:right\"='share_busway'  or\n          (cycleway='share_busway' ) \n         )\n\n     then 'oui'::text\n    else null\nend as bus_droite_direct ,\n\ncase when  (\"cycleway:left\"='share_busway' or \n         \"cycleway:left\"='opposite_share_busway' or \n          (cycleway='share_busway'  and oneway is null     )\n\n)\n     then 'oui'::text\n    else null\nend as bus_gauche_inverse ,\n\n\n\n \n\ncycleway , \"cycleway:left\",\"cycleway:right\",bicycle from planet_osm_line order by z_order )  as route",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",
@@ -203,7 +234,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "( select way ,\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel \n\n\nfrom planet_osm_line where\n\n   highway='motorway' or\n   highway='motorway_link' or\n   highway='trunk' or\n   highway='trunk_link' or\n   bicycle='no'\n\n) as interdit",
+        "table": "( select way ,\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel \n\n\nfrom planet_osm_line where\n\n   highway='motorway' or\n   highway='motorway_link' or\n   highway='trunk' or\n   highway='trunk_link' or\n   bicycle='no'\n\norder by z_order\n\n) as interdit",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",
@@ -346,7 +377,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way ,name from planet_osm_point where shop='bicycle' ) velociste",
+        "table": "(select way ,name from planet_osm_point where shop='bicycle' and \"service:bicycle:diy\" is null) velociste",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",
@@ -363,6 +394,62 @@
       "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
       "advanced": {},
       "name": "velociste"
+    },
+    {
+      "geometry": "point",
+      "extent": [
+        4.624723454368405,
+        45.571556582677886,
+        5.105626390759079,
+        45.9325221912698
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way ,name from planet_osm_point where shop='bicycle' and \"service:bicycle:diy\" ='yes') ateliers",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "514821.86,5711954.69,568355.73,5769542.44",
+        "dbname": "osmgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "gisuser",
+        "password": "carina"
+      },
+      "id": "ateliers",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "ateliers"
+    },
+    {
+      "geometry": "polygon",
+      "extent": [
+        4.624721927232422,
+        45.57146898564117,
+        5.105630972167029,
+        45.932550993750674
+      ],
+      "Datasource": {
+        "type": "postgis",
+        "table": "(select way ,name from planet_osm_polygon where shop='bicycle' and \"service:bicycle:diy\" ='yes') ateliers",
+        "key_field": "",
+        "geometry_field": "",
+        "extent_cache": "auto",
+        "extent": "514821.69,5711940.76,568356.24,5769547.05",
+        "dbname": "osmgis",
+        "host": "localhost",
+        "port": "5432",
+        "user": "gisuser",
+        "password": "carina"
+      },
+      "id": "ateliers_polygon",
+      "class": "",
+      "srs-name": "900913",
+      "srs": "+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0.0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs +over",
+      "advanced": {},
+      "name": "ateliers_polygon"
     }
   ],
   "scale": 1,

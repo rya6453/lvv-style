@@ -39,6 +39,9 @@ polygon-fill:@fleuve;
   polygon-fill : @bati_standard ;
   [building='school']{polygon-fill : @bati_remarquable ; }
   [building='church']{polygon-fill : @bati_remarquable ; }
+  [building='hospital']{polygon-fill : @bati_remarquable ; }  
+  [building='university']{polygon-fill : @bati_remarquable ; }  
+  
   }
 }
 

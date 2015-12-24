@@ -89,13 +89,113 @@
   
   [zoom>=17]{    
     
- 	marker-file : url(image/velociste_16x16.png);
+ 	marker-file : url(image/velocistes_16.png);
     //marker-file : url(svg/fleche.svg);
     
     marker-allow-overlap : true ;     
     
     text-name : [name];
-    text-face-name : 'DejaVu Sans Condensed';
+    text-face-name : 'Arial Regular';
+    text-halo-radius : 2;
+    text-allow-overlap : true;
+    
+    text-dy:-12;    
+       
+  }   
+  
+}
+
+
+//============== ateliers ==================
+
+#ateliers [zoom>=13][zoom<=18]{
+  
+  [zoom=13]{
+    
+      marker-width : 4 ;
+      marker-fill : @atelier;
+     
+      	 
+  }  
+  
+  [zoom=14]{
+    
+      marker-width : 6 ;
+      marker-fill : @atelier;
+      marker-allow-overlap : true;	 
+  }  
+  
+  [zoom=15]{
+ 	 marker-width : 8 ;
+     marker-fill : @atelier;
+     marker-allow-overlap : true;
+    }
+  
+   [zoom=16]{
+ 	 marker-width : 10 ;
+     marker-fill : @atelier;
+     marker-allow-overlap : true;
+  }
+  
+  [zoom>=17]{    
+    
+ 	marker-file : url(image/ateliers_diy_20.png);
+ 
+    
+    marker-allow-overlap : true ;     
+    
+    text-name : [name];
+    text-face-name : 'Arial Regular';
+    text-halo-radius :1;
+    text-allow-overlap : true;
+    
+   
+    text-dy:-12;    
+       
+  }   
+  
+}
+
+//============== ateliers tag sur batiments ==================
+
+#ateliers_polygon [zoom>=13][zoom<=18]{
+  
+  [zoom=13]{
+    
+      marker-width : 4 ;
+      marker-fill : @atelier;
+     
+      	 
+  }  
+  
+  [zoom=14]{
+    
+      marker-width : 6 ;
+      marker-fill : @atelier;
+      marker-allow-overlap : true;	 
+  }  
+  
+  [zoom=15]{
+ 	 marker-width : 8 ;
+     marker-fill : @atelier;
+     marker-allow-overlap : true;
+    }
+  
+   [zoom=16]{
+ 	 marker-width : 10 ;
+     marker-fill : @atelier;
+     marker-allow-overlap : true;
+  }
+  
+  [zoom>=17]{    
+    
+ 	marker-file : url(image/ateliers_diy_16.png);
+ 
+    
+    marker-allow-overlap : true ;     
+    
+    text-name : [name];
+    text-face-name : 'Arial Regular';
     text-halo-radius : 2;
     text-allow-overlap : true;
     

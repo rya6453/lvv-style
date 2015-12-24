@@ -1,6 +1,5 @@
 
 
-
 #funiculaire{
    [zoom >13]{
   ::fond{  
@@ -15,6 +14,7 @@
       }    
     }
 }
+
 
 
 #interdit_velo{
@@ -389,25 +389,13 @@
       }
     
   }
-  } 
-  
-  
-  
-   [chemin_simple='oui']{
-
-  [zoom >=14]{
-  
-    line-width:1;
-    line-color:@chemin;
-    line-dasharray : 5,7 ;
-    }
-  }     
-  
+  }   
 
   
-
   
-  [voieverte='oui'],[highway='cycleway']{
+ 
+  
+  [voieverte='oui']{ //================ Voie verte = =============
     [zoom >= 13]{
       [pont='non']{
         line-color:  @piste;
@@ -432,6 +420,22 @@
    }// fin voie verte
   
   
+  
+  
+   [chemin_simple='oui']{
+
+  [zoom >=14]{
+  
+    line-width:1;
+    line-color:@chemin;
+    line-dasharray : 5,5;
+    line-opacity : 0.5 ; 
+    }
+  }     
+  
+   
+  
+ 
   
   
   
@@ -459,6 +463,16 @@
      [zoom >=16]{          
        ::bande_droite{
         line-offset : -5;
+        line-color: @piste; 
+        line-width:5;line-join: round;
+        line-dasharray : 8, 8;  } 
+   }
+  }  
+  
+   [bande_gauche='oui']{  //================ Bande cyclables à gauche==============
+     [zoom >=16]{          
+       ::bande_droite{
+        line-offset : 5;
         line-color: @piste; 
         line-width:5;line-join: round;
         line-dasharray : 8, 8;  } 
