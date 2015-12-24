@@ -38,6 +38,7 @@ node       capacity     text         linear
 way        cycleway     text         linear 
 way		   cycleway:left    text	 linear
 way		   cycleway:right	text	 linear
+node,way   service:bicycle:diy   text		polygon	
 way		   motor_vehicle   text     linear
 way        max_speed    text         linear	
 node,way   bridge       text         linear
