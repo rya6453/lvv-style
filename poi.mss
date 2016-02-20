@@ -95,6 +95,7 @@
     marker-allow-overlap : true ;     
     
     text-name : [name];
+    text-size : 11;
     text-face-name : 'Arial Regular';
     text-halo-radius : 2;
     text-allow-overlap : true;
@@ -145,6 +146,7 @@
     marker-allow-overlap : true ;     
     
     text-name : [name];
+    text-size : 11;
     text-face-name : 'Arial Regular';
     text-halo-radius :1;
     text-allow-overlap : true;
@@ -159,6 +161,7 @@
 //============== ateliers tag sur batiments ==================
 
 #ateliers_polygon [zoom>=13][zoom<=18]{
+  
   
   [zoom=13]{
     
@@ -195,6 +198,7 @@
     marker-allow-overlap : true ;     
     
     text-name : [name];
+    text-size : 11;
     text-face-name : 'Arial Regular';
     text-halo-radius : 2;
     text-allow-overlap : true;
