@@ -22,10 +22,16 @@
   
   
   
-   [amenity='bicycle_parking'][zoom >=17]{
+   [amenity='bicycle_parking'][zoom >=17]{  
     
-    marker-file :url(image/pkv_12x12.png);
-    marker-allow-overlap : true ; 
+    
+    
+    marker-file : url(image/pkv_12x12.png);
+    
+    
+    //marker-file : url(svg/pkv.svg);
+    //marker-width : 10 ; 
+     
     text-name : [capacity];
     text-face-name : 'DejaVu Sans Condensed';
     text-halo-radius :1;
@@ -89,8 +95,8 @@
   
   [zoom>=17]{    
     
- 	marker-file : url(image/velocistes_16.png);
-    //marker-file : url(svg/fleche.svg);
+ 	marker-file : url(svg/velosiste.svg);
+    marker-width : 18 ; 
     
     marker-allow-overlap : true ;     
     
@@ -140,8 +146,8 @@
   
   [zoom>=17]{    
     
- 	marker-file : url(image/ateliers_diy_20.png);
- 
+ 	marker-file : url(svg/atelier.svg);
+    marker-width : 20 ; 
     
     marker-allow-overlap : true ;     
     
@@ -192,8 +198,9 @@
   
   [zoom>=17]{    
     
- 	marker-file : url(image/ateliers_diy_16.png);
- 
+ 	
+    marker-file : url(svg/atelier.svg);
+    marker-width : 20 ; 
     
     marker-allow-overlap : true ;     
     

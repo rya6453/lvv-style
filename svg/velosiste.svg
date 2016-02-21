@@ -9,12 +9,12 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="210mm"
-   height="297mm"
+   width="206"
+   height="206"
    id="svg2"
    version="1.1"
    inkscape:version="0.48.4 r9939"
-   sodipodi:docname="Nouveau document 1">
+   sodipodi:docname="velosistes.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -25,16 +25,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="222.42609"
-     inkscape:cy="821.184"
+     inkscape:cx="43.08234"
+     inkscape:cy="115.57182"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1365"
+     inkscape:window-width="1366"
      inkscape:window-height="719"
-     inkscape:window-x="1"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1" />
+     inkscape:window-x="1280"
+     inkscape:window-y="256"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -43,14 +47,15 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
   <g
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(-179.34375,-140.75)">
     <path
        sodipodi:type="arc"
        style="fill:#ffff00;fill-opacity:1;stroke:#040000;stroke-width:7;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
@@ -59,7 +64,7 @@
        sodipodi:cy="243.73508"
        sodipodi:rx="99.500023"
        sodipodi:ry="99.500023"
-       d="m 381.83767,243.73508 a 99.500023,99.500023 0 1 1 -199.00005,0 99.500023,99.500023 0 1 1 199.00005,0 z"
+       d="m 381.83767,243.73508 c 0,54.95234 -44.54768,99.50002 -99.50002,99.50002 -54.95235,0 -99.50003,-44.54768 -99.50003,-99.50002 0,-54.95235 44.54768,-99.50003 99.50003,-99.50003 54.95234,0 99.50002,44.54768 99.50002,99.50003 z"
        inkscape:export-filename="/home/yves/Documents/MapBox/project/lvv/image/velociste_16x16.png"
        inkscape:export-xdpi="6.9902911"
        inkscape:export-ydpi="6.9902911" />
