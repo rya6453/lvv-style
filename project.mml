@@ -1,9 +1,9 @@
 {
   "bounds": [
-    4.6151,
-    45.5714,
-    5.1075,
-    45.9322
+    4.7621,
+    45.6919,
+    4.9502,
+    45.793
   ],
   "center": [
     4.8479,
@@ -234,7 +234,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "( select way ,\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel \n\n\nfrom planet_osm_line where\n\n   highway='motorway' or\n   highway='motorway_link' or\n   highway='trunk' or\n   highway='trunk_link' or\n   bicycle='no'\n\norder by z_order\n\n) as interdit",
+        "table": "( select way ,\ncase when tunnel in ('yes','building_passage','culvert')\n        then 'oui'::text\n        else 'non'::text\nend as tunnel \n\n\nfrom planet_osm_line where\n\n   highway='motorway' or\n   highway='motorway_link' or\n   highway='trunk' or\n   highway='trunk_link' or\n   railway='tram'\n\norder by z_order\n\n) as interdit",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",

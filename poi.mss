@@ -22,21 +22,21 @@
   
   
   
-   [amenity='bicycle_parking'][zoom >=17]{  
+   [amenity='bicycle_parking'][zoom >=17]{      
     
     
     
-    marker-file : url(image/pkv_12x12.png);
+    //marker-file : url(image/pkv_12x12.png);    
     
     
-    //marker-file : url(svg/pkv.svg);
-    //marker-width : 10 ; 
+   marker-file : url('svg/pkv.svg');
+   marker-width :12; 
      
     text-name : [capacity];
     text-face-name : 'DejaVu Sans Condensed';
     text-halo-radius :1;
-    text-allow-overlap : true;
-    text-dx :8;
+    text-allow-overlap : false;
+    text-dx : 8;
     text-dy : 0 ;
     }  
     

@@ -87,10 +87,10 @@
       text-name : [name];
   	  text-face-name : 'DejaVu Sans Condensed';
       text-halo-radius : 2;
-      text-size : 11 ;
+      text-size : 12 ;
       text-placement : line ;
       text-allow-overlap : true;
-      text-fill : gray - 50% ;   
+      text-fill : gray - 80% ;   
 	}
     [zoom >=17][dsc='oui']{text-allow-overlap : true;text-halo-fill:@dsc;} 
      
