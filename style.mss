@@ -17,7 +17,7 @@
 
 
 
-#interdit_velo{
+#interdit_velo{  
   
  
   [zoom >=15][tunnel='non']{      
@@ -30,8 +30,7 @@
     line-color: #fa8484; 
     line-width:1.5;
        line-dasharray : 5,8 ;
-     }    
-    
+     }       
  
 }  
 
@@ -541,7 +540,7 @@
       
       marker-file : url(svg/fleche_dsc.svg);
       marker-placement: line;
-      marker-fill:@piste - 40%;     
+      marker-fill:#428042;     
 
     
     

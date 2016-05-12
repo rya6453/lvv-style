@@ -1,7 +1,6 @@
 
 
-
-#nom_ville[zoom>=11][zoom<=13] {       
+#nom_ville[zoom>=11][zoom<=14] {       
   
         text-name : [name];
      	text-face-name : 'DejaVu Sans Condensed';
@@ -27,6 +26,10 @@
         [place='town']{ text-size : 16 ;}
         [place='village']{ text-size : 14 ;}
     }
+  
+ 
+    
+    
  
 }
 

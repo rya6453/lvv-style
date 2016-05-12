@@ -1,9 +1,9 @@
 {
   "bounds": [
-    4.7621,
-    45.6919,
-    4.9502,
-    45.793
+    4.6232,
+    45.5715,
+    5.1039,
+    45.9347
   ],
   "center": [
     4.8479,
@@ -349,7 +349,7 @@
       ],
       "Datasource": {
         "type": "postgis",
-        "table": "(select way ,name,place from planet_osm_point where place='town' \nor place='city' or place ='village') as ville",
+        "table": "(select way ,name,place from planet_osm_point where place='town' \nor place='city' or place ='village' )as ville",
         "key_field": "",
         "geometry_field": "",
         "extent_cache": "auto",

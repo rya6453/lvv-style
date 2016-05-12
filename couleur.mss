@@ -4,7 +4,7 @@
 
 
 @fleuve:#B0D0E5;
-@texte_fleuve :#B0D0E5 - 90% ;
+@texte_fleuve :#0016A9 ;
 
 
 @pont :#413211;
@@ -27,11 +27,11 @@
 @route_blanche_fond : #413211;
 @service : #bba0d4;
 
-@fond_pieton : #fff - 5 %;
+@fond_pieton : #ECFCED;
 @bord_pieton : #B4B8FF;
 
 @bati_standard : #E3E1DD;
-@bati_remarquable :@bati_standard - 40%;
+@bati_remarquable :#C9C6C1  ;
 
 @surface : #BCD6A5;
 
